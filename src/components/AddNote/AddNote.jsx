@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNotesContext } from "../../context/notes-context";
 
 export const AddNote = () => {
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState("DO NOT");
   const { setNotes } = useNotesContext();
   const addNoteHandler = async (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export const AddNote = () => {
 
       setNotes(response.data.tasks);
     }
-    setTask("");
+    setTask("DO NOT");
   };
   return (
     <form

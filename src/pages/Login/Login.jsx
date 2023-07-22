@@ -7,7 +7,7 @@ import { useNotesContext } from "../../context/notes-context";
 export const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const { email, password } = formData;
-  const { setIsLogin, setNotes } = useNotesContext();
+  const { setIsLogin } = useNotesContext();
   const navigate = useNavigate();
   const updateInput = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -24,18 +24,10 @@ export const Login = () => {
         withCredentials: true,
       }
     );
-    console.log(response);
+
     if (response.status === 200) {
       setIsLogin(true);
       navigate("/");
-      const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/tasks`,
-        {
-          withCredentials: true,
-        }
-      );
-      console.log(response);
-      setNotes(response.data.tasks);
     }
   };
   return (
