@@ -12,8 +12,12 @@ export const Nav = () => {
     navigate("/search");
     setSearchQuery(e.target.value);
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/task/search/${e.target.value}`
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/task/search/${e.target.value}`,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
       );
       setSearchResult(response.data.result);
     } catch (e) {
