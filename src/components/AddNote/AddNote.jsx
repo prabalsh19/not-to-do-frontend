@@ -20,7 +20,7 @@ export const AddNote = () => {
 
     if (response.status === 200) {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/tasks`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/task/tasks`,
         {
           withCredentials: true,
         }

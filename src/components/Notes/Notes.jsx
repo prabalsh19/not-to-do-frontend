@@ -17,7 +17,7 @@ export const Notes = () => {
   useEffect(() => {
     (async () => {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/tasks`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/task/tasks`,
         {
           withCredentials: true,
         }
