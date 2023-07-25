@@ -1,11 +1,11 @@
+import { Outlet } from "react-router-dom";
 import { Nav } from "./components/Nav/Nav";
-import { Notes } from "./components/Notes/Notes";
 
 function App() {
   return (
     <div className="bg-slate-200 min-h-screen leading-relaxed">
       <Nav />
-      <Notes />
+      <Outlet />
     </div>
   );
 }
