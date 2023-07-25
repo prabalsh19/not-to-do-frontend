@@ -13,9 +13,7 @@ export const Nav = () => {
     setSearchQuery(e.target.value);
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/task/search/?searchQuery=${
-          e.target.value
-        }`
+        `${import.meta.env.VITE_BACKEND_URL}/api/task/search/${e.target.value}`
       );
       setSearchResult(response.data.result);
     } catch (e) {
