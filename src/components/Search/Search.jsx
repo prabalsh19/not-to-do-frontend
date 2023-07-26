@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { useNotesContext } from "../../context/notes-context";
+import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
-  const { searchResult } = useNotesContext();
-
+  const { searchResult, searchQuery } = useNotesContext();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (searchQuery === "") {
+      navigate("/");
+    }
+  }, [searchQuery]);
   return (
     <div className="py-10  flex flex-row flex-wrap justify-center  gap-4">
       {searchResult.length > 0 ? (
@@ -15,9 +22,7 @@ export const Search = () => {
           </div>
         ))
       ) : (
-        <h1 className="text-red-700 font-semibold text-2xl">
-          Create Your First !Todo
-        </h1>
+        <h1 className="text-red-700 font-semibold text-2xl">No Notes Found</h1>
       )}
     </div>
   );
