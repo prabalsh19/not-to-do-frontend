@@ -8,11 +8,16 @@ export const Notes = () => {
   const { notes, setNotes, refresh, setRefresh } = useNotesContext();
 
   const deleteTaskHandler = async (id) => {
-    await axios.delete(
-      `${import.meta.env.VITE_BACKEND_URL}/api/task/remove/${id}`
-    );
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/task/remove/${id}`,
+        { withCredentials: true }
+      );
 
-    setRefresh((prev) => !prev);
+      setRefresh((prev) => !prev);
+    } catch (e) {
+      console.error(e);
+    }
   };
   useEffect(() => {
     (async () => {
